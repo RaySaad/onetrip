@@ -1,0 +1,131 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fleet_expenses
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-23 00:00+0000\n"
+"PO-Revision-Date: 2026-08-23 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Arabic\n"
+"Language: ar_001\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#. module: fleet_expenses
+#: model:ir.ui.menu,name:fleet_expenses.menu_fleet_expenses_root
+msgid "Fleet Expenses"
+msgstr "مصاريف الأسطول"
+
+#. module: fleet_expenses
+#: model:ir.model.fields,field_description:fleet_expenses.field_hr_expense__is_fleet_expense
+msgid "Fleet Expense"
+msgstr "مصروف أسطول"
+
+#. module: fleet_expenses
+#: model:ir.actions.act_window,name:fleet_expenses.action_my_fleet_expenses
+#: model:ir.ui.menu,name:fleet_expenses.menu_my_fleet_expenses
+msgid "My Fleet Expenses"
+msgstr "مصاريف الأسطول الخاصة بي"
+
+#. module: fleet_expenses
+#: model:ir.actions.act_window,name:fleet_expenses.action_all_fleet_expenses
+#: model:ir.ui.menu,name:fleet_expenses.menu_all_fleet_expenses
+msgid "All Fleet Expenses"
+msgstr "جميع مصاريف الأسطول"
+
+#. module: fleet_expenses
+#: model:ir.actions.act_window,name:fleet_expenses.action_fleet_expenses_to_process
+msgid "Fleet Expenses to Process"
+msgstr "مصاريف الأسطول قيد المعالجة"
+
+#. module: fleet_expenses
+#: model:ir.ui.menu,name:fleet_expenses.menu_fleet_expenses_to_process
+msgid "Expenses to Process"
+msgstr "المصاريف قيد المعالجة"
+
+#. module: fleet_expenses
+#: model:ir.actions.act_window,name:fleet_expenses.action_fleet_expense_analysis
+#: model:ir.ui.menu,name:fleet_expenses.menu_fleet_expense_analysis
+msgid "Fleet Expense Analysis"
+msgstr "تحليل مصاريف الأسطول"
+
+#. module: fleet_expenses
+#: model:ir.model.fields,field_description:fleet_expenses.field_hr_expense__vehicle_id
+#: model_terms:ir.ui.view,arch_db:fleet_expenses.hr_expense_view_search_fleet_expenses
+msgid "Vehicle"
+msgstr "المركبة"
+
+#. module: fleet_expenses
+#: model:ir.model.fields,field_description:fleet_expenses.field_hr_expense__vehicle_odometer
+msgid "Odometer"
+msgstr "عداد المسافة"
+
+#. module: fleet_expenses
+#: model:ir.model.fields,field_description:fleet_expenses.field_hr_expense__fuel_liters
+msgid "Fuel Quantity (L)"
+msgstr "كمية الوقود (لتر)"
+
+#. module: fleet_expenses
+#: model:ir.model.fields,field_description:fleet_expenses.field_hr_expense__fuel_cost_per_liter
+msgid "Cost / Liter"
+msgstr "التكلفة / لتر"
+
+#. module: fleet_expenses
+#: model:ir.ui.menu,name:fleet_expenses.menu_fleet_expense_reporting
+msgid "Reporting"
+msgstr "التقارير"
+
+#. module: fleet_expenses
+#: model:ir.ui.menu,name:fleet_expenses.menu_fleet_expense_configuration
+msgid "Configuration"
+msgstr "الإعدادات"
+
+#. module: fleet_expenses
+#: model:ir.ui.menu,name:fleet_expenses.menu_fleet_expense_categories
+msgid "Expense Categories"
+msgstr "فئات المصروفات"
+
+#. module: fleet_expenses
+#: code:addons/fleet_expenses/models/hr_expense.py:0
+msgid "A vehicle is required before submitting a Fleet Expense."
+msgstr "يجب تحديد مركبة قبل إرسال مصروف الأسطول."
+
+#. module: fleet_expenses
+#: code:addons/fleet_expenses/models/hr_expense.py:0
+msgid "Odometer cannot be negative."
+msgstr "لا يمكن أن تكون قراءة عداد المسافة سالبة."
+
+#. module: fleet_expenses
+#: code:addons/fleet_expenses/models/hr_expense.py:0
+msgid "Fuel quantity cannot be negative."
+msgstr "لا يمكن أن تكون كمية الوقود سالبة."
+
+#. module: fleet_expenses
+#: model:ir.model.fields,help:fleet_expenses.field_hr_expense__is_fleet_expense
+msgid "Enable this option when the expense belongs to a fleet vehicle."
+msgstr "فعّل هذا الخيار عندما يكون المصروف متعلقًا بإحدى مركبات الأسطول."
+
+#. module: fleet_expenses
+#: model:ir.model.fields,help:fleet_expenses.field_hr_expense__vehicle_id
+msgid "Vehicle that incurred this expense."
+msgstr "المركبة التي تم تحميل هذا المصروف عليها."
+
+#. module: fleet_expenses
+#: model:ir.model.fields,help:fleet_expenses.field_hr_expense__vehicle_odometer
+msgid "Vehicle odometer reading when the expense was incurred."
+msgstr "قراءة عداد المركبة عند حدوث المصروف."
+
+#. module: fleet_expenses
+#: model:ir.model.fields,help:fleet_expenses.field_hr_expense__fuel_liters
+msgid "Optional fuel quantity in liters for fuel expenses."
+msgstr "كمية الوقود باللتر، وهي اختيارية لمصاريف الوقود."
+
+#. module: fleet_expenses
+#: model:ir.model.fields,help:fleet_expenses.field_hr_expense__fuel_cost_per_liter
+msgid "Total expense amount divided by fuel quantity."
+msgstr "إجمالي مبلغ المصروف مقسومًا على كمية الوقود."

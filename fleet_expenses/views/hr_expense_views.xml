@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_expense_view_form_fleet_expenses" model="ir.ui.view">
+        <field name="name">hr.expense.form.fleet.expenses</field>
+        <field name="model">hr.expense</field>
+        <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date']" position="after">
+                <field name="is_fleet_expense" readonly="not is_editable"/>
+                <field name="vehicle_id"
+                       invisible="not is_fleet_expense"
+                       required="is_fleet_expense"
+                       readonly="not is_editable"/>
+                <field name="vehicle_odometer"
+                       invisible="not is_fleet_expense"
+                       readonly="not is_editable"/>
+                <field name="fuel_liters"
+                       invisible="not is_fleet_expense"
+                       readonly="not is_editable"/>
+                <field name="fuel_cost_per_liter"
+                       invisible="not is_fleet_expense or fuel_liters == 0"
+                       readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_expense_view_list_fleet_expenses" model="ir.ui.view">
+        <field name="name">hr.expense.list.fleet.expenses</field>
+        <field name="model">hr.expense</field>
+        <field name="inherit_id" ref="hr_expense.hr_expense_view_expenses_analysis_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_id']" position="after">
+                <field name="is_fleet_expense" optional="hide" readonly="not is_editable"/>
+                <field name="vehicle_id" optional="show" readonly="not is_editable"/>
+                <field name="vehicle_odometer" optional="hide" readonly="not is_editable"/>
+                <field name="fuel_liters" optional="hide" readonly="not is_editable"/>
+                <field name="fuel_cost_per_liter" optional="hide" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_expense_view_search_fleet_expenses" model="ir.ui.view">
+        <field name="name">hr.expense.search.fleet.expenses</field>
+        <field name="model">hr.expense</field>
+        <field name="inherit_id" ref="hr_expense.hr_expense_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_id']" position="after">
+                <field name="vehicle_id"/>
+            </xpath>
+            <xpath expr="//group[@name='group_filters']" position="inside">
+                <filter string="Vehicle" name="group_by_vehicle" context="{'group_by': 'vehicle_id'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_my_fleet_expenses" model="ir.actions.act_window">
+        <field name="name">My Fleet Expenses</field>
+        <field name="res_model">hr.expense</field>
+        <field name="view_mode">list,form,pivot,graph</field>
+        <field name="search_view_id" ref="hr_expense.hr_expense_view_search"/>
+        <field name="domain">[('is_fleet_expense', '=', True), ('employee_id.user_id', '=', uid)]</field>
+        <field name="context">{'default_is_fleet_expense': True, 'search_default_my_open_expenses': 1}</field>
+    </record>
+
+    <record id="action_fleet_expenses_to_process" model="ir.actions.act_window">
+        <field name="name">Fleet Expenses to Process</field>
+        <field name="res_model">hr.expense</field>
+        <field name="view_mode">list,form,pivot,graph</field>
+        <field name="search_view_id" ref="hr_expense.hr_expense_view_search"/>
+        <field name="domain">[('is_fleet_expense', '=', True), ('state', '=', 'submitted')]</field>
+        <field name="context">{'default_is_fleet_expense': True}</field>
+    </record>
+
+    <record id="action_all_fleet_expenses" model="ir.actions.act_window">
+        <field name="name">All Fleet Expenses</field>
+        <field name="res_model">hr.expense</field>
+        <field name="view_mode">list,form,pivot,graph</field>
+        <field name="search_view_id" ref="hr_expense.hr_expense_view_search"/>
+        <field name="domain">[('is_fleet_expense', '=', True)]</field>
+        <field name="context">{'default_is_fleet_expense': True}</field>
+    </record>
+
+    <record id="action_fleet_expense_analysis" model="ir.actions.act_window">
+        <field name="name">Fleet Expense Analysis</field>
+        <field name="res_model">hr.expense</field>
+        <field name="view_mode">pivot,graph,list</field>
+        <field name="search_view_id" ref="hr_expense.hr_expense_view_search"/>
+        <field name="domain">[('is_fleet_expense', '=', True)]</field>
+        <field name="context">{'default_is_fleet_expense': True}</field>
+    </record>
+
+    <menuitem id="menu_fleet_expenses_root"
+              name="Fleet Expenses"
+              web_icon="fleet,static/description/icon.png"
+              sequence="235"
+              groups="base.group_user"/>
+
+    <menuitem id="menu_my_fleet_expenses"
+              name="My Fleet Expenses"
+              parent="menu_fleet_expenses_root"
+              action="action_my_fleet_expenses"
+              sequence="10"
+              groups="base.group_user"/>
+
+    <menuitem id="menu_fleet_expenses_to_process"
+              name="Expenses to Process"
+              parent="menu_fleet_expenses_root"
+              action="action_fleet_expenses_to_process"
+              sequence="20"
+              groups="hr_expense.group_hr_expense_team_approver"/>
+
+    <menuitem id="menu_all_fleet_expenses"
+              name="All Fleet Expenses"
+              parent="menu_fleet_expenses_root"
+              action="action_all_fleet_expenses"
+              sequence="30"
+              groups="hr_expense.group_hr_expense_user"/>
+
+    <menuitem id="menu_fleet_expense_reporting"
+              name="Reporting"
+              parent="menu_fleet_expenses_root"
+              sequence="80"
+              groups="hr_expense.group_hr_expense_user"/>
+
+    <menuitem id="menu_fleet_expense_analysis"
+              name="Fleet Expense Analysis"
+              parent="menu_fleet_expense_reporting"
+              action="action_fleet_expense_analysis"
+              sequence="10"
+              groups="hr_expense.group_hr_expense_user"/>
+
+    <menuitem id="menu_fleet_expense_configuration"
+              name="Configuration"
+              parent="menu_fleet_expenses_root"
+              sequence="100"
+              groups="hr_expense.group_hr_expense_manager"/>
+
+    <menuitem id="menu_fleet_expense_categories"
+              name="Expense Categories"
+              parent="menu_fleet_expense_configuration"
+              action="hr_expense.hr_expense_product"
+              sequence="10"
+              groups="hr_expense.group_hr_expense_manager"/>
+</odoo>
