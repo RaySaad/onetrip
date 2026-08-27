@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_employee_account_statement_wizard_readonly,employee.account.statement.wizard.readonly,model_employee_account_statement_wizard,account.group_account_readonly,1,1,1,1

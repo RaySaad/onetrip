@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="paperformat_employee_statement" model="report.paperformat">
+        <field name="name">Employee Statement A4</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">14</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">5</field>
+        <field name="dpi">96</field>
+    </record>
+
+    <record id="action_report_employee_statement" model="ir.actions.report">
+        <field name="name">Employee Statement</field>
+        <field name="model">employee.account.statement.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">employee_account_statement.report_employee_statement</field>
+        <field name="report_file">employee_account_statement.report_employee_statement</field>
+        <field name="paperformat_id" ref="paperformat_employee_statement"/>
+        <field name="print_report_name">'Employee Statement - %s' % (object.employee_id.name or '')</field>
+    </record>
+
+    <template id="report_employee_statement">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="d" t-value="statement"/>
+                <div class="page employee-statement-page">
+                    <style>
+                        .employee-statement-page {
+                            font-family: Arial, Helvetica, sans-serif;
+                            color: #1f2937;
+                            font-size: 10.5px;
+                        }
+                        .es-header {
+                            border-bottom: 3px solid #374151;
+                            padding-bottom: 10px;
+                            margin-bottom: 14px;
+                        }
+                        .es-logo {
+                            max-height: 64px;
+                            max-width: 160px;
+                        }
+                        .es-company {
+                            font-size: 14px;
+                            font-weight: 700;
+                            color: #374151;
+                        }
+                        .es-title {
+                            text-align: center;
+                            font-size: 24px;
+                            font-weight: 700;
+                            letter-spacing: 0.5px;
+                            color: #111827;
+                            margin-top: 3px;
+                        }
+                        .es-subtitle {
+                            text-align: center;
+                            color: #6b7280;
+                            font-size: 10px;
+                        }
+                        .es-info-table {
+                            width: 100%;
+                            border-collapse: separate;
+                            border-spacing: 8px 0;
+                            margin: 0 -8px 14px -8px;
+                        }
+                        .es-info-box {
+                            border: 1px solid #d1d5db;
+                            border-radius: 5px;
+                            vertical-align: top;
+                            width: 50%;
+                        }
+                        .es-info-title {
+                            background: #374151;
+                            color: white;
+                            font-weight: 700;
+                            padding: 7px 9px;
+                            font-size: 10px;
+                            letter-spacing: 0.3px;
+                        }
+                        .es-info-content {
+                            padding: 0;
+                        }
+                        .es-info-inner {
+                            width: 100%;
+                            border-collapse: collapse;
+                            table-layout: fixed;
+                        }
+                        .es-info-inner td {
+                            padding: 6px 8px;
+                            vertical-align: middle;
+                            border-bottom: 1px solid #d1d5db;
+                        }
+                        .es-info-inner tr:last-child td {
+                            border-bottom: 0;
+                        }
+                        .es-info-inner .es-label {
+                            width: 38%;
+                            font-weight: 700;
+                            color: #4b5563;
+                            border-right: 1px solid #d1d5db;
+                        }
+                        .es-info-inner .es-value {
+                            width: 62%;
+                            color: #111827;
+                        }
+                        .es-table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            margin-top: 4px;
+                        }
+                        .es-table thead {
+                            display: table-header-group;
+                        }
+                        .es-table th {
+                            background: #1f2937;
+                            color: white;
+                            padding: 7px 4px;
+                            border: 1px solid #374151;
+                            text-align: center;
+                            font-size: 9px;
+                        }
+                        .es-table td {
+                            border: 1px solid #d1d5db;
+                            padding: 6px 4px;
+                            vertical-align: top;
+                            font-size: 9px;
+                        }
+                        .es-num {
+                            text-align: right;
+                            white-space: nowrap;
+                        }
+                        .es-center {
+                            text-align: center;
+                            white-space: nowrap;
+                        }
+                        .es-opening td {
+                            background: #f3f4f6;
+                            font-weight: 700;
+                        }
+                        .es-summary {
+                            width: 46%;
+                            margin-left: 54%;
+                            margin-top: 12px;
+                            border-collapse: collapse;
+                        }
+                        .es-summary td {
+                            border: 1px solid #d1d5db;
+                            padding: 6px 8px;
+                        }
+                        .es-summary .label {
+                            font-weight: 700;
+                            background: #f3f4f6;
+                        }
+                        .es-summary .closing td {
+                            font-size: 11px;
+                            font-weight: 700;
+                            background: #e5e7eb;
+                            border-top: 2px solid #374151;
+                        }
+                        .es-note {
+                            margin-top: 8px;
+                            color: #6b7280;
+                            font-size: 8.5px;
+                            font-style: italic;
+                        }
+                        .es-footer {
+                            margin-top: 18px;
+                            padding-top: 7px;
+                            border-top: 1px solid #d1d5db;
+                            color: #6b7280;
+                            font-size: 8.5px;
+                        }
+                    </style>
+
+                    <div class="es-header">
+                        <table style="width:100%; border-collapse:collapse;">
+                            <tr>
+                                <td style="width:28%; vertical-align:middle;">
+                                    <img t-if="d['company'].logo" t-att-src="image_data_uri(d['company'].logo)" class="es-logo"/>
+                                </td>
+                                <td style="width:44%; vertical-align:middle;">
+                                    <div class="es-title">EMPLOYEE STATEMENT</div>
+                                    <div class="es-subtitle">Account Statement</div>
+                                </td>
+                                <td style="width:28%; vertical-align:middle; text-align:right;">
+                                    <div class="es-company" t-esc="d['company'].name"/>
+                                    <div t-if="d['company'].vat" style="color:#6b7280; margin-top:3px;">
+                                        VAT: <span t-esc="d['company'].vat"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <table class="es-info-table">
+                        <tr>
+                            <td class="es-info-box">
+                                <div class="es-info-title">EMPLOYEE INFORMATION</div>
+                                <div class="es-info-content">
+                                    <table class="es-info-inner">
+                                        <tr>
+                                            <td class="es-label">Employee Name</td>
+                                            <td class="es-value" t-esc="d['employee_name']"/>
+                                        </tr>
+                                        <tr>
+                                            <td class="es-label">Saudi National / IQAMA ID</td>
+                                            <td class="es-value" t-esc="d['employee_iqama'] or '-'"/>
+                                        </tr>
+                                        <tr t-if="d['department']">
+                                            <td class="es-label">Department</td>
+                                            <td class="es-value" t-esc="d['department']"/>
+                                        </tr>
+                                        <tr t-if="d['job_title']">
+                                            <td class="es-label">Job Title</td>
+                                            <td class="es-value" t-esc="d['job_title']"/>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                            <td class="es-info-box">
+                                <div class="es-info-title">STATEMENT INFORMATION</div>
+                                <div class="es-info-content">
+                                    <table class="es-info-inner">
+                                        <tr>
+                                            <td class="es-label">Account</td>
+                                            <td class="es-value" t-esc="d['account_name']"/>
+                                        </tr>
+                                        <tr>
+                                            <td class="es-label">Period</td>
+                                            <td class="es-value">
+                                                <span t-esc="d['date_from_label']"/> - <span t-esc="d['date_to_label']"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="es-label">Currency</td>
+                                            <td class="es-value" t-esc="d['currency_name']"/>
+                                        </tr>
+                                        <tr>
+                                            <td class="es-label">Entries</td>
+                                            <td class="es-value">Posted only</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="es-table">
+                        <thead>
+                            <tr>
+                                <th style="width:9%;">Date</th>
+                                <th style="width:8%;">Journal</th>
+                                <th style="width:13%;">Journal Entry</th>
+                                <th style="width:13%;">Reference</th>
+                                <th style="width:25%;">Description</th>
+                                <th style="width:10%;">Debit</th>
+                                <th style="width:10%;">Credit</th>
+                                <th style="width:12%;">Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="es-opening">
+                                <td colspan="7">Opening Balance</td>
+                                <td class="es-num" t-esc="d['opening_balance_label']"/>
+                            </tr>
+                            <tr t-foreach="d['lines']" t-as="line">
+                                <td class="es-center" t-esc="line['date_label']"/>
+                                <td class="es-center" t-esc="line['journal']"/>
+                                <td t-esc="line['entry']"/>
+                                <td t-esc="line['reference']"/>
+                                <td t-esc="line['description']"/>
+                                <td class="es-num" t-esc="line['debit_label']"/>
+                                <td class="es-num" t-esc="line['credit_label']"/>
+                                <td class="es-num" t-esc="line['balance_label']"/>
+                            </tr>
+                            <tr t-if="not d['lines']">
+                                <td colspan="8" style="text-align:center; color:#6b7280; padding:14px;">No posted transactions found for the selected period.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="es-summary">
+                        <tr>
+                            <td class="label">Opening Balance</td>
+                            <td class="es-num" t-esc="d['opening_balance_label']"/>
+                        </tr>
+                        <tr>
+                            <td class="label">Period Debit</td>
+                            <td class="es-num" t-esc="d['period_debit_label']"/>
+                        </tr>
+                        <tr>
+                            <td class="label">Period Credit</td>
+                            <td class="es-num" t-esc="d['period_credit_label']"/>
+                        </tr>
+                        <tr class="closing">
+                            <td>Closing Balance</td>
+                            <td class="es-num" t-esc="d['closing_balance_label']"/>
+                        </tr>
+                    </table>
+
+                    <div class="es-note">This statement includes posted journal items only.</div>
+
+                    <div class="es-footer">
+                        <table style="width:100%; border-collapse:collapse;">
+                            <tr>
+                                <td style="width:40%;">Printed By: <strong t-esc="d['printed_by']"/></td>
+                                <td style="width:40%; text-align:center;">Printed On: <strong t-esc="d['printed_on']"/></td>
+                                <td style="width:20%; text-align:right;">Page <span class="page"/> / <span class="topage"/></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,191 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* employee_account_statement
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#. module: employee_account_statement
+#: model:ir.model.fields,field_description:employee_account_statement.field_account_move_line__employee_id
+#: model:ir.model.fields,field_description:employee_account_statement.field_employee_account_statement_wizard__employee_id
+msgid "Employee"
+msgstr "الموظف"
+
+#. module: employee_account_statement
+#: model:ir.actions.act_window,name:employee_account_statement.action_employee_account_statement_wizard
+#: model:ir.ui.menu,name:employee_account_statement.menu_employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.view_employee_account_statement_wizard_form
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Employee Statement"
+msgstr "كشف حساب الموظف"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.view_employee_account_statement_wizard_form
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Employee Information"
+msgstr "معلومات الموظف"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Employee Name"
+msgstr "اسم الموظف"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Saudi National / IQAMA ID"
+msgstr "رقم الهوية الوطنية / الإقامة"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Statement Information"
+msgstr "معلومات كشف الحساب"
+
+#. module: employee_account_statement
+#: model:ir.model.fields,field_description:employee_account_statement.field_employee_account_statement_wizard__account_id
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Account"
+msgstr "الحساب"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.view_employee_account_statement_wizard_form
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Period"
+msgstr "الفترة"
+
+#. module: employee_account_statement
+#: model:ir.model.fields,field_description:employee_account_statement.field_employee_account_statement_wizard__date_from
+msgid "Date From"
+msgstr "من تاريخ"
+
+#. module: employee_account_statement
+#: model:ir.model.fields,field_description:employee_account_statement.field_employee_account_statement_wizard__date_to
+msgid "Date To"
+msgstr "إلى تاريخ"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Currency"
+msgstr "العملة"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Opening Balance"
+msgstr "الرصيد الافتتاحي"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Period Debit"
+msgstr "إجمالي المدين للفترة"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Period Credit"
+msgstr "إجمالي الدائن للفترة"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Closing Balance"
+msgstr "الرصيد الختامي"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.view_employee_account_statement_wizard_form
+msgid "Export PDF"
+msgstr "تصدير PDF"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.view_employee_account_statement_wizard_form
+msgid "Export Excel"
+msgstr "تصدير Excel"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.view_employee_account_statement_wizard_form
+msgid "Only posted journal items are included."
+msgstr "يتم تضمين بنود اليومية المرحلة فقط."
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Posted only"
+msgstr "المرحلة فقط"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Department"
+msgstr "القسم"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Job Title"
+msgstr "المسمى الوظيفي"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Journal"
+msgstr "دفتر اليومية"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Journal Entry"
+msgstr "قيد اليومية"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Reference"
+msgstr "المرجع"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Description"
+msgstr "البيان"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Debit"
+msgstr "مدين"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Credit"
+msgstr "دائن"
+
+#. module: employee_account_statement
+#: model_terms:ir.ui.view,arch_db:employee_account_statement.report_employee_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Balance"
+msgstr "الرصيد"
+
+#. module: employee_account_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Printed By: %s"
+msgstr "تمت الطباعة بواسطة: %s"
+
+#. module: employee_account_statement
+#: code:addons/employee_account_statement/wizard/employee_statement_wizard.py:0
+msgid "Printed On: %s"
+msgstr "تاريخ ووقت الطباعة: %s"
