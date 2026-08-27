@@ -1,0 +1,4 @@
+[submodule "operating-unit"]
+	path = operating-unit
+	url = https://github.com/OCA/operating-unit.git
+	branch = 19.0
