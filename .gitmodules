@@ -2,3 +2,7 @@
 	path = operating-unit
 	url = https://github.com/OCA/operating-unit.git
 	branch = 19.0
+[submodule "server-tools"]
+	path = server-tools
+	url = https://github.com/OCA/server-tools.git
+	branch = 19.0
