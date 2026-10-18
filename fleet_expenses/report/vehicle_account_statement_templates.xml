@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="vehicle_account_statement_document">
+<t t-call="web.html_container"><t t-foreach="statements" t-as="s"><t t-call="web.external_layout">
+<div class="page">
+<h2 style="color:#1f4e78">Vehicle Account Statement</h2>
+<p><strong t-out="s['vehicle'].display_name"/> · <span t-out="s['date_from']"/> – <span t-out="s['date_to']"/> · <span t-out="s['currency'].name"/></p>
+<h3>Financial Summary</h3>
+<table class="table table-sm table-bordered"><tbody>
+<tr><th></th><th class="text-end">Period</th><th class="text-end">Lifetime</th></tr>
+<tr><td>Operating Expenses</td><td class="text-end" t-out="s['totals']['period_operating']" t-options="{'widget':'monetary','display_currency':s['currency']}"/><td class="text-end" t-out="s['totals']['lifetime_operating']" t-options="{'widget':'monetary','display_currency':s['currency']}"/></tr>
+<tr><td>Depreciation Expense</td><td class="text-end" t-out="s['totals']['period_depreciation']" t-options="{'widget':'monetary','display_currency':s['currency']}"/><td class="text-end" t-out="s['totals']['lifetime_depreciation']" t-options="{'widget':'monetary','display_currency':s['currency']}"/></tr>
+<tr class="fw-bold"><td>Total Vehicle Cost</td><td class="text-end" t-out="s['totals']['period_total']" t-options="{'widget':'monetary','display_currency':s['currency']}"/><td class="text-end" t-out="s['totals']['lifetime_total']" t-options="{'widget':'monetary','display_currency':s['currency']}"/></tr>
+</tbody></table>
+<h3>Vehicle Information</h3><table class="table table-sm table-bordered"><tbody>
+<tr><th>Vehicle</th><td t-out="s['vehicle'].display_name"/><th>License Plate</th><td t-out="s['vehicle'].license_plate or ''"/></tr>
+<tr><th>VIN</th><td t-out="s['vehicle'].vin_sn or ''"/><th>Driver</th><td t-out="s['vehicle'].driver_id.display_name or ''"/></tr>
+<tr><th>Opening Odometer</th><td t-out="s['odometer']['opening']"/><th>Closing / Distance</th><td><span t-out="s['odometer']['closing']"/> / <span t-out="s['odometer']['distance']"/> km</td></tr>
+<tr><th>Operating Cost / KM</th><td t-out="s['totals']['operating_cost_km']"/><th>Total Cost / KM</th><td t-out="s['totals']['total_cost_km']"/></tr>
+</tbody></table>
+<h3>Asset &amp; Depreciation</h3><table class="table table-sm table-bordered"><thead><tr><th>Asset</th><th>Status</th><th class="text-end">Original</th><th class="text-end">Salvage</th><th class="text-end">Depreciated</th><th class="text-end">Book Value</th></tr></thead><tbody>
+<tr t-foreach="s['assets']" t-as="a" t-att-class="'table-primary fw-bold' if a['active_current'] else ''"><td><span t-out="a['name']"/><span t-if="a['active_current']"> (Current)</span></td><td t-out="a['state']"/><td class="text-end" t-out="a['original_value']"/><td class="text-end" t-out="a['salvage_value']"/><td class="text-end" t-out="a['depreciated_value']"/><td class="text-end" t-out="a['book_value']"/></tr>
+<tr t-if="not s['assets']"><td colspan="6">No linked assets.</td></tr></tbody></table>
+<h3>Operating Expense Summary</h3><table class="table table-sm table-bordered"><tbody><tr t-foreach="s['category_summary']" t-as="r"><td t-out="r['name']"/><td class="text-end" t-out="r['amount']" t-options="{'widget':'monetary','display_currency':s['currency']}"/></tr></tbody></table>
+<h3>Detailed Transactions</h3><table class="table table-sm table-bordered"><thead><tr><th>Date</th><th>Entry</th><th>Source</th><th>Partner / Employee</th><th>Account</th><th>Label</th><th class="text-end">Amount</th></tr></thead><tbody><tr t-foreach="s['transactions']" t-as="r"><td t-out="r['date']"/><td t-out="r['entry']"/><td t-out="r['source']"/><td t-out="r['partner']"/><td t-out="r['account']"/><td t-out="r['label']"/><td class="text-end" t-out="r['amount']"/></tr></tbody></table>
+<h3>Fuel Analysis</h3><table class="table table-sm table-bordered"><tbody><tr><th>Liters</th><td t-out="s['fuel']['liters']"/><th>Fuel Cost</th><td t-out="s['fuel']['cost']"/></tr><tr><th>Cost / Liter</th><td t-out="s['fuel']['cost_per_liter']"/><th>L / 100 KM</th><td t-out="s['fuel']['consumption_100km']"/></tr></tbody></table>
+<t t-if="s['services']"><h3>Service History (Informational Only)</h3><p class="text-muted">Service costs are not added to accounting totals.</p><table class="table table-sm table-bordered"><thead><tr><th>Date</th><th>Service</th><th>Vendor</th><th>Odometer</th><th>Cost</th></tr></thead><tbody><tr t-foreach="s['services']" t-as="r"><td t-out="r['date']"/><td t-out="r['service']"/><td t-out="r['vendor']"/><td t-out="r['odometer']"/><td t-out="r['cost']"/></tr></tbody></table></t>
+<h3>GL Account Summary</h3><table class="table table-sm table-bordered"><thead><tr><th>Account</th><th class="text-end">Debit</th><th class="text-end">Credit</th><th class="text-end">Balance</th></tr></thead><tbody><tr t-foreach="s['account_summary']" t-as="r"><td t-out="r['name']"/><td class="text-end" t-out="r['debit']"/><td class="text-end" t-out="r['credit']"/><td class="text-end" t-out="r['balance']"/></tr></tbody></table>
+<h3>Source Summary</h3><table class="table table-sm table-bordered"><tbody><tr t-foreach="s['source_summary']" t-as="r"><td t-out="r['name']"/><td class="text-end" t-out="r['count']"/><td class="text-end" t-out="r['amount']"/></tr></tbody></table>
+<t t-if="s['depreciation_schedule']"><h3>Depreciation Schedule</h3><table class="table table-sm table-bordered"><thead><tr><th>Asset</th><th>Date</th><th>Entry</th><th>State</th><th class="text-end">Amount</th></tr></thead><tbody><tr t-foreach="s['depreciation_schedule']" t-as="r"><td t-out="r['asset']"/><td t-out="r['date']"/><td t-out="r['entry']"/><td t-out="r['state']"/><td class="text-end" t-out="r['amount']"/></tr></tbody></table></t>
+</div></t></t></t>
+</template>
+</odoo>

@@ -1,24 +1,19 @@
 {
     'name': 'Fleet Expenses',
-    'version': '19.0.1.0.1',
-    'summary': 'Track employee and company-paid vehicle expenses by fleet vehicle',
-    'description': """
-Fleet Expenses
-==============
-Extends Odoo Expenses with vehicle-specific tracking while preserving Odoo's
-native expense approval, reimbursement, accounting, and Fleet vendor-bill flow.
-    """,
+    'version': '19.0.2.0.3',
+    'summary': 'Track vehicle expenses and produce vehicle account statements',
+    'description': """Extends Odoo Expenses with vehicle tracking and adds PDF/XLSX Vehicle Account Statements.""",
     'author': 'Custom',
     'license': 'LGPL-3',
     'category': 'Human Resources/Expenses',
-    'depends': [
-        'fleet',
-        'hr_expense',
-        'account_fleet',
-    ],
+    'depends': ['fleet', 'hr_expense', 'account_fleet', 'account_asset_fleet'],
     'data': [
+        'security/ir.model.access.csv',
         'views/hr_expense_views.xml',
         'views/fleet_expense_menus.xml',
+        'wizard/vehicle_account_statement_wizard_views.xml',
+        'report/vehicle_account_statement_templates.xml',
+        'report/vehicle_account_statement_report.xml',
     ],
     'application': True,
     'installable': True,

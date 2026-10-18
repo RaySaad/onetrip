@@ -1,28 +1,7 @@
-# Fleet Expenses - Odoo 19
+# Fleet Expenses for Odoo 19 Enterprise
 
-Technical name: `fleet_expenses`
+Version 19.0.2.0.3 is built directly from the working 19.0.1.0.1 source. It preserves every V1 field and XML identifier and adds a bilingual Vehicle Account Statement under **Fleet Expenses > Reporting** with PDF and Excel exports.
 
-## Purpose
-Connect Odoo Expenses, Fleet, and Accounting around the vehicle as a common cost dimension.
+Financial totals use accounting move lines carrying the native `vehicle_id`. Fleet service history is informational and is never added again, preventing double counting. Asset reporting reuses Odoo 19's native `account.asset.vehicle_id` relationship.
 
-## V1 workflow
-- Employee-paid / petty-cash vehicle costs: create a Fleet Expense.
-- Approval, reimbursement, taxes, receipt attachments, and accounting remain native Odoo Expenses.
-- Vehicle is copied to the generated accounting expense line using Odoo 19 `account_fleet`'s native `account.move.line.vehicle_id` field.
-- Supplier maintenance/workshop invoices continue to use Vendor Bills with Vehicle on the bill line. Odoo's native `account_fleet` module creates the Fleet Service when the bill is posted.
-- Fleet Expense records do NOT automatically create Fleet Service records, preventing fuel/toll/parking records from flooding maintenance history.
-
-## Added fields on hr.expense
-- Fleet Expense
-- Vehicle
-- Odometer
-- Fuel Quantity (L)
-- Cost / Liter (computed)
-
-## Dependencies
-- fleet
-- hr_expense
-- account_fleet
-
-## Validation
-A vehicle is required before a Fleet Expense can be submitted. Drafts created from receipt uploads can be completed later.
+Install by extracting the ZIP into a custom addons directory, updating the Apps list, and installing/upgrading **Fleet Expenses**. Requires Odoo 19 Enterprise modules Expenses, Fleet, Accounting/Fleet, and Assets. Excel export requires the `xlsxwriter` Python package included with standard Odoo distributions.

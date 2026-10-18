@@ -6,46 +6,27 @@ class HrExpense(models.Model):
     _inherit = 'hr.expense'
 
     is_fleet_expense = fields.Boolean(
-        string='Fleet Expense',
-        default=lambda self: bool(self.env.context.get('default_is_fleet_expense')),
-        index=True,
-        tracking=True,
-        help='Enable this option when the expense belongs to a fleet vehicle.',
-    )
+        string='Fleet Expense', default=lambda self: bool(self.env.context.get('default_is_fleet_expense')),
+        index=True, tracking=True, help='Enable this option when the expense belongs to a fleet vehicle.')
     vehicle_id = fields.Many2one(
-        comodel_name='fleet.vehicle',
-        string='Vehicle',
-        index=True,
-        tracking=True,
-        check_company=True,
-        help='Vehicle that incurred this expense.',
-    )
+        comodel_name='fleet.vehicle', string='Vehicle', index=True, tracking=True,
+        check_company=True, help='Vehicle that incurred this expense.')
     vehicle_odometer = fields.Float(
-        string='Odometer',
-        tracking=True,
-        help='Vehicle odometer reading when the expense was incurred.',
-    )
+        string='Odometer', tracking=True, help='Vehicle odometer reading when the expense was incurred.')
     fuel_liters = fields.Float(
-        string='Fuel Quantity (L)',
-        tracking=True,
-        help='Optional fuel quantity in liters for fuel expenses.',
-    )
+        string='Fuel Quantity (L)', tracking=True, help='Optional fuel quantity in liters for fuel expenses.')
     fuel_cost_per_liter = fields.Monetary(
-        string='Cost / Liter',
-        currency_field='currency_id',
-        compute='_compute_fuel_cost_per_liter',
-        store=True,
-        help='Total expense amount divided by fuel quantity.',
-    )
+        string='Cost / Liter', currency_field='currency_id', compute='_compute_fuel_cost_per_liter',
+        store=True, help='Total expense amount divided by fuel quantity.')
+    # Compatibility aliases for the two unsuccessful reconstructed V2 builds.
+    # V1 fields above remain canonical and retain all existing stored data.
+    fleet_odometer = fields.Float(related='vehicle_odometer', readonly=False)
+    fuel_quantity = fields.Float(related='fuel_liters', readonly=False)
 
     @api.depends('total_amount_currency', 'fuel_liters')
     def _compute_fuel_cost_per_liter(self):
         for expense in self:
-            expense.fuel_cost_per_liter = (
-                expense.total_amount_currency / expense.fuel_liters
-                if expense.fuel_liters
-                else 0.0
-            )
+            expense.fuel_cost_per_liter = expense.total_amount_currency / expense.fuel_liters if expense.fuel_liters else 0.0
 
     def action_submit(self):
         missing_vehicle = self.filtered(lambda expense: expense.is_fleet_expense and not expense.vehicle_id)

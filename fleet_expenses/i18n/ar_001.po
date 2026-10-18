@@ -1,131 +1,471 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* fleet_expenses
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-23 00:00+0000\n"
-"PO-Revision-Date: 2026-08-23 00:00+0000\n"
-"Last-Translator: \n"
-"Language-Team: Arabic\n"
 "Language: ar_001\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #. module: fleet_expenses
-#: model:ir.ui.menu,name:fleet_expenses.menu_fleet_expenses_root
 msgid "Fleet Expenses"
 msgstr "مصاريف الأسطول"
 
 #. module: fleet_expenses
-#: model:ir.model.fields,field_description:fleet_expenses.field_hr_expense__is_fleet_expense
 msgid "Fleet Expense"
 msgstr "مصروف أسطول"
 
 #. module: fleet_expenses
-#: model:ir.actions.act_window,name:fleet_expenses.action_my_fleet_expenses
-#: model:ir.ui.menu,name:fleet_expenses.menu_my_fleet_expenses
 msgid "My Fleet Expenses"
 msgstr "مصاريف الأسطول الخاصة بي"
 
 #. module: fleet_expenses
-#: model:ir.actions.act_window,name:fleet_expenses.action_all_fleet_expenses
-#: model:ir.ui.menu,name:fleet_expenses.menu_all_fleet_expenses
+msgid "Expenses to Process"
+msgstr "المصاريف المطلوب معالجتها"
+
+#. module: fleet_expenses
 msgid "All Fleet Expenses"
 msgstr "جميع مصاريف الأسطول"
 
 #. module: fleet_expenses
-#: model:ir.actions.act_window,name:fleet_expenses.action_fleet_expenses_to_process
-msgid "Fleet Expenses to Process"
-msgstr "مصاريف الأسطول قيد المعالجة"
-
-#. module: fleet_expenses
-#: model:ir.ui.menu,name:fleet_expenses.menu_fleet_expenses_to_process
-msgid "Expenses to Process"
-msgstr "المصاريف قيد المعالجة"
-
-#. module: fleet_expenses
-#: model:ir.actions.act_window,name:fleet_expenses.action_fleet_expense_analysis
-#: model:ir.ui.menu,name:fleet_expenses.menu_fleet_expense_analysis
-msgid "Fleet Expense Analysis"
-msgstr "تحليل مصاريف الأسطول"
-
-#. module: fleet_expenses
-#: model:ir.model.fields,field_description:fleet_expenses.field_hr_expense__vehicle_id
-#: model_terms:ir.ui.view,arch_db:fleet_expenses.hr_expense_view_search_fleet_expenses
-msgid "Vehicle"
-msgstr "المركبة"
-
-#. module: fleet_expenses
-#: model:ir.model.fields,field_description:fleet_expenses.field_hr_expense__vehicle_odometer
-msgid "Odometer"
-msgstr "عداد المسافة"
-
-#. module: fleet_expenses
-#: model:ir.model.fields,field_description:fleet_expenses.field_hr_expense__fuel_liters
-msgid "Fuel Quantity (L)"
-msgstr "كمية الوقود (لتر)"
-
-#. module: fleet_expenses
-#: model:ir.model.fields,field_description:fleet_expenses.field_hr_expense__fuel_cost_per_liter
-msgid "Cost / Liter"
-msgstr "التكلفة / لتر"
-
-#. module: fleet_expenses
-#: model:ir.ui.menu,name:fleet_expenses.menu_fleet_expense_reporting
 msgid "Reporting"
 msgstr "التقارير"
 
 #. module: fleet_expenses
-#: model:ir.ui.menu,name:fleet_expenses.menu_fleet_expense_configuration
+msgid "Fleet Expense Analysis"
+msgstr "تحليل مصاريف الأسطول"
+
+#. module: fleet_expenses
+#: model:ir.actions.act_window,name:fleet_expenses.action_vehicle_account_statement_wizard
+#: model:ir.actions.report,name:fleet_expenses.action_report_vehicle_account_statement
+#: model:ir.ui.menu,name:fleet_expenses.menu_vehicle_account_statement
+#: model_terms:ir.ui.view,arch_db:fleet_expenses.vehicle_account_statement_document
+#: model_terms:ir.ui.view,arch_db:fleet_expenses.view_vehicle_account_statement_wizard_form
+msgid "Vehicle Account Statement"
+msgstr "كشف حساب المركبة"
+
+#. module: fleet_expenses
+msgid "Vehicle"
+msgstr "المركبة"
+
+#. module: fleet_expenses
+msgid "Odometer"
+msgstr "عداد المسافة"
+
+#. module: fleet_expenses
+msgid "Fuel Quantity (L)"
+msgstr "كمية الوقود (لتر)"
+
+#. module: fleet_expenses
+msgid "Cost / Liter"
+msgstr "التكلفة / لتر"
+
+#. module: fleet_expenses
+msgid "Posted Entries Only"
+msgstr "القيود المرحلة فقط"
+
+#. module: fleet_expenses
+msgid "Include Service History"
+msgstr "تضمين سجل الصيانة"
+
+#. module: fleet_expenses
+msgid "Include Depreciation Schedule"
+msgstr "تضمين جدول الإهلاك"
+
+#. module: fleet_expenses
+msgid "A vehicle is required for a Fleet Expense."
+msgstr "يجب تحديد مركبة لمصروف الأسطول."
+
+#. module: fleet_expenses
+msgid "Date From must be on or before Date To."
+msgstr "يجب أن يكون تاريخ البداية قبل تاريخ النهاية أو مساوياً له."
+
+#. module: fleet_expenses
+msgid "Fleet Expenses to Process"
+msgstr "مصاريف الأسطول قيد المعالجة"
+
+#. module: fleet_expenses
 msgid "Configuration"
 msgstr "الإعدادات"
 
 #. module: fleet_expenses
-#: model:ir.ui.menu,name:fleet_expenses.menu_fleet_expense_categories
 msgid "Expense Categories"
 msgstr "فئات المصروفات"
 
 #. module: fleet_expenses
-#: code:addons/fleet_expenses/models/hr_expense.py:0
 msgid "A vehicle is required before submitting a Fleet Expense."
 msgstr "يجب تحديد مركبة قبل إرسال مصروف الأسطول."
 
 #. module: fleet_expenses
-#: code:addons/fleet_expenses/models/hr_expense.py:0
 msgid "Odometer cannot be negative."
 msgstr "لا يمكن أن تكون قراءة عداد المسافة سالبة."
 
 #. module: fleet_expenses
-#: code:addons/fleet_expenses/models/hr_expense.py:0
 msgid "Fuel quantity cannot be negative."
 msgstr "لا يمكن أن تكون كمية الوقود سالبة."
 
 #. module: fleet_expenses
-#: model:ir.model.fields,help:fleet_expenses.field_hr_expense__is_fleet_expense
-msgid "Enable this option when the expense belongs to a fleet vehicle."
-msgstr "فعّل هذا الخيار عندما يكون المصروف متعلقًا بإحدى مركبات الأسطول."
+msgid "Options"
+msgstr "الخيارات"
 
 #. module: fleet_expenses
-#: model:ir.model.fields,help:fleet_expenses.field_hr_expense__vehicle_id
-msgid "Vehicle that incurred this expense."
-msgstr "المركبة التي تم تحميل هذا المصروف عليها."
+msgid "PDF"
+msgstr "PDF"
 
 #. module: fleet_expenses
-#: model:ir.model.fields,help:fleet_expenses.field_hr_expense__vehicle_odometer
-msgid "Vehicle odometer reading when the expense was incurred."
-msgstr "قراءة عداد المركبة عند حدوث المصروف."
+msgid "Excel"
+msgstr "Excel"
 
 #. module: fleet_expenses
-#: model:ir.model.fields,help:fleet_expenses.field_hr_expense__fuel_liters
-msgid "Optional fuel quantity in liters for fuel expenses."
-msgstr "كمية الوقود باللتر، وهي اختيارية لمصاريف الوقود."
+msgid "Summary"
+msgstr "الملخص"
 
 #. module: fleet_expenses
-#: model:ir.model.fields,help:fleet_expenses.field_hr_expense__fuel_cost_per_liter
-msgid "Total expense amount divided by fuel quantity."
-msgstr "إجمالي مبلغ المصروف مقسومًا على كمية الوقود."
+msgid "Financial Summary"
+msgstr "الملخص المالي"
+
+#. module: fleet_expenses
+msgid "Period"
+msgstr "الفترة"
+
+#. module: fleet_expenses
+msgid "Lifetime"
+msgstr "منذ بداية الاستخدام"
+
+#. module: fleet_expenses
+msgid "Operating Expenses"
+msgstr "المصاريف التشغيلية"
+
+#. module: fleet_expenses
+msgid "Depreciation Expense"
+msgstr "مصروف الإهلاك"
+
+#. module: fleet_expenses
+msgid "Total Vehicle Cost"
+msgstr "إجمالي تكلفة المركبة"
+
+#. module: fleet_expenses
+msgid "Vehicle Information"
+msgstr "معلومات المركبة"
+
+#. module: fleet_expenses
+msgid "License Plate"
+msgstr "لوحة المركبة"
+
+#. module: fleet_expenses
+msgid "VIN"
+msgstr "رقم الهيكل"
+
+#. module: fleet_expenses
+msgid "Driver"
+msgstr "السائق"
+
+#. module: fleet_expenses
+msgid "Opening Odometer"
+msgstr "عداد المسافة الافتتاحي"
+
+#. module: fleet_expenses
+msgid "Closing Odometer"
+msgstr "عداد المسافة الختامي"
+
+#. module: fleet_expenses
+msgid "Closing / Distance"
+msgstr "العداد الختامي / المسافة"
+
+#. module: fleet_expenses
+msgid "Distance"
+msgstr "المسافة"
+
+#. module: fleet_expenses
+msgid "Operating Cost / KM"
+msgstr "التكلفة التشغيلية / كم"
+
+#. module: fleet_expenses
+msgid "Total Cost / KM"
+msgstr "إجمالي التكلفة / كم"
+
+#. module: fleet_expenses
+msgid "Asset & Depreciation"
+msgstr "الأصل والإهلاك"
+
+#. module: fleet_expenses
+msgid "Assets & Depreciation"
+msgstr "الأصول والإهلاك"
+
+#. module: fleet_expenses
+msgid "Asset"
+msgstr "الأصل"
+
+#. module: fleet_expenses
+msgid "Current"
+msgstr "حالي"
+
+#. module: fleet_expenses
+msgid "(Current)"
+msgstr "(حالي)"
+
+#. module: fleet_expenses
+msgid "Status"
+msgstr "الحالة"
+
+#. module: fleet_expenses
+msgid "State"
+msgstr "الحالة"
+
+#. module: fleet_expenses
+msgid "Reference"
+msgstr "المرجع"
+
+#. module: fleet_expenses
+msgid "Acquisition Date"
+msgstr "تاريخ الاستحواذ"
+
+#. module: fleet_expenses
+msgid "Original"
+msgstr "القيمة الأصلية"
+
+#. module: fleet_expenses
+msgid "Original Value"
+msgstr "القيمة الأصلية"
+
+#. module: fleet_expenses
+msgid "Salvage"
+msgstr "القيمة غير القابلة للإهلاك"
+
+#. module: fleet_expenses
+msgid "Depreciated"
+msgstr "القيمة المهلكة"
+
+#. module: fleet_expenses
+msgid "Book Value"
+msgstr "القيمة الدفترية"
+
+#. module: fleet_expenses
+msgid "Method"
+msgstr "الطريقة"
+
+#. module: fleet_expenses
+msgid "Operating Expense Summary"
+msgstr "ملخص المصاريف التشغيلية"
+
+#. module: fleet_expenses
+msgid "Detailed Transactions"
+msgstr "تفاصيل المعاملات"
+
+#. module: fleet_expenses
+msgid "Expense Transactions"
+msgstr "معاملات المصاريف"
+
+#. module: fleet_expenses
+msgid "Expense Summary"
+msgstr "ملخص المصاريف"
+
+#. module: fleet_expenses
+msgid "Date"
+msgstr "التاريخ"
+
+#. module: fleet_expenses
+msgid "Entry"
+msgstr "القيد"
+
+#. module: fleet_expenses
+msgid "Source Document"
+msgstr "المستند المصدر"
+
+#. module: fleet_expenses
+msgid "Source"
+msgstr "المصدر"
+
+#. module: fleet_expenses
+msgid "Partner / Employee"
+msgstr "الشريك / الموظف"
+
+#. module: fleet_expenses
+msgid "Partner/Employee"
+msgstr "الشريك / الموظف"
+
+#. module: fleet_expenses
+msgid "Account"
+msgstr "الحساب"
+
+#. module: fleet_expenses
+msgid "Category"
+msgstr "الفئة"
+
+#. module: fleet_expenses
+msgid "Label"
+msgstr "البيان"
+
+#. module: fleet_expenses
+msgid "Debit"
+msgstr "مدين"
+
+#. module: fleet_expenses
+msgid "Credit"
+msgstr "دائن"
+
+#. module: fleet_expenses
+msgid "Balance"
+msgstr "الرصيد"
+
+#. module: fleet_expenses
+msgid "Amount"
+msgstr "المبلغ"
+
+#. module: fleet_expenses
+msgid "Type"
+msgstr "النوع"
+
+#. module: fleet_expenses
+msgid "Name"
+msgstr "الاسم"
+
+#. module: fleet_expenses
+msgid "Count"
+msgstr "العدد"
+
+#. module: fleet_expenses
+msgid "GL Account"
+msgstr "حساب الأستاذ العام"
+
+#. module: fleet_expenses
+msgid "Fuel Analysis"
+msgstr "تحليل الوقود"
+
+#. module: fleet_expenses
+msgid "Fuel"
+msgstr "الوقود"
+
+#. module: fleet_expenses
+msgid "Liters"
+msgstr "اللترات"
+
+#. module: fleet_expenses
+msgid "Fuel Cost"
+msgstr "تكلفة الوقود"
+
+#. module: fleet_expenses
+msgid "L / 100 KM"
+msgstr "لتر / 100 كم"
+
+#. module: fleet_expenses
+msgid "Metric"
+msgstr "المؤشر"
+
+#. module: fleet_expenses
+msgid "Value"
+msgstr "القيمة"
+
+#. module: fleet_expenses
+msgid "Total Liters"
+msgstr "إجمالي اللترات"
+
+#. module: fleet_expenses
+msgid "Fuel Expense Amount"
+msgstr "مبلغ مصروف الوقود"
+
+#. module: fleet_expenses
+msgid "Average Cost / Liter"
+msgstr "متوسط التكلفة / لتر"
+
+#. module: fleet_expenses
+msgid "Consumption L / 100 KM"
+msgstr "الاستهلاك لتر / 100 كم"
+
+#. module: fleet_expenses
+msgid "Fuel Cost / KM"
+msgstr "تكلفة الوقود / كم"
+
+#. module: fleet_expenses
+msgid "Service History (Informational Only)"
+msgstr "سجل الصيانة (للمعلومات فقط)"
+
+#. module: fleet_expenses
+msgid "Service History"
+msgstr "سجل الصيانة"
+
+#. module: fleet_expenses
+msgid "Service costs are not added to accounting totals."
+msgstr "لا تتم إضافة تكاليف الصيانة إلى الإجماليات المحاسبية."
+
+#. module: fleet_expenses
+msgid "Service"
+msgstr "الخدمة"
+
+#. module: fleet_expenses
+msgid "Vendor"
+msgstr "المورد"
+
+#. module: fleet_expenses
+msgid "Cost"
+msgstr "التكلفة"
+
+#. module: fleet_expenses
+msgid "Cost (Informational)"
+msgstr "التكلفة (للمعلومات)"
+
+#. module: fleet_expenses
+msgid "Notes"
+msgstr "ملاحظات"
+
+#. module: fleet_expenses
+msgid "GL Account Summary"
+msgstr "ملخص حسابات الأستاذ العام"
+
+#. module: fleet_expenses
+msgid "Source Summary"
+msgstr "ملخص المصادر"
+
+#. module: fleet_expenses
+msgid "Employee Expenses"
+msgstr "مصاريف الموظفين"
+
+#. module: fleet_expenses
+msgid "Vendor Bills"
+msgstr "فواتير الموردين"
+
+#. module: fleet_expenses
+msgid "Other"
+msgstr "أخرى"
+
+#. module: fleet_expenses
+msgid "Depreciation Schedule"
+msgstr "جدول الإهلاك"
+
+#. module: fleet_expenses
+msgid "No linked assets."
+msgstr "لا توجد أصول مرتبطة."
+
+#. module: fleet_expenses
+msgid "Yes"
+msgstr "نعم"
+
+#. module: fleet_expenses
+msgid "Company"
+msgstr "الشركة"
+
+#. module: fleet_expenses
+msgid "Currency"
+msgstr "العملة"
+
+#. module: fleet_expenses
+msgid "Period Operating Expenses"
+msgstr "المصاريف التشغيلية للفترة"
+
+#. module: fleet_expenses
+msgid "Period Depreciation"
+msgstr "إهلاك الفترة"
+
+#. module: fleet_expenses
+msgid "Period Total Cost"
+msgstr "إجمالي تكلفة الفترة"
+
+#. module: fleet_expenses
+msgid "Lifetime Total Cost"
+msgstr "إجمالي التكلفة منذ بداية الاستخدام"
+
+#. module: fleet_expenses
+msgid "%(date_from)s to %(date_to)s"
+msgstr "%(date_from)s إلى %(date_to)s"
