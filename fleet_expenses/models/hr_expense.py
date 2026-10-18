@@ -20,16 +20,17 @@ class HrExpense(models.Model):
         store=True, help='Total expense amount divided by fuel quantity.')
     # Compatibility aliases for the two unsuccessful reconstructed V2 builds.
     # V1 fields above remain canonical and retain all existing stored data.
-    fleet_odometer = fields.Float(
-    string='Legacy Fleet Odometer',
-    related='vehicle_odometer',
-    readonly=False,
-)
-fuel_quantity = fields.Float(
-    string='Legacy Fuel Quantity (L)',
-    related='fuel_liters',
-    readonly=False,
-)
+        fleet_odometer = fields.Float(
+        string='Legacy Fleet Odometer',
+        related='vehicle_odometer',
+        readonly=False,
+
+        )
+        fuel_quantity = fields.Float(
+            string='Legacy Fuel Quantity (L)',
+            related='fuel_liters',
+            readonly=False,
+        )
 
     @api.depends('total_amount_currency', 'fuel_liters')
     def _compute_fuel_cost_per_liter(self):
